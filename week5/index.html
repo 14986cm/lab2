@@ -150,13 +150,32 @@
 </div>             
 </header>
 <section>
-<script>
-  var age = 21;
-  document.getElementById("age-info").innerHTML = "Age: " + age + " years";
-</script>
-<h2>My Personal Profile Page</h2>
-<p id="age-info"></p>
-<p>I am a 2nd Year Computer Science student at Asia Pacific College.</p>
+  <h2>My Personal Profile Page</h2>
+  <p id="age-info"></p>
+  <p id="experience-info"></p>
+  <p id="GWA-result"></p>
+  <p id="name-info"></p>
+  <p>I am a 2nd Year Computer Science student at Asia Pacific College.</p>
 </section>
+<script>
+    alert("Welcome to Joana Grace Garcia's Personal Profile Page!");
+
+    var age = 21; //
+    document.getElementById("age-info").innerHTML = "Age: " + age + " years";
+
+    var hasProgrammingExperience = true; //
+    var experienceText = hasProgrammingExperience ? "I have programming experience." : "I am new to programming.";
+    document.getElementById("experience-info").innerHTML = experienceText;
+
+    var num1 = 10;
+    var num2 = 5;
+    var result = num1 + num2;
+    document.getElementById("GWA-result").innerHTML = "GWA Result: " + result;
+
+    var firstName = "Joana";
+    var lastName = "Garcia";
+    var fullName = firstName + " " + lastName;
+    document.getElementById("name-info").innerHTML = "Full Name: " + fullName;
+  </script>
 </body>
 </html>
