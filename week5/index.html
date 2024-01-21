@@ -155,6 +155,7 @@
   <p id="experience-info"></p>
   <p id="GWA-result"></p>
   <p id="name-info"></p>
+  <p id="programming-languages"></p>
   <p>I am a 2nd Year Computer Science student at Asia Pacific College.</p>
 </section>
 <script>
@@ -172,10 +173,20 @@
     var result = num1 + num2;
     document.getElementById("GWA-result").innerHTML = "GWA Result: " + result;
 
-    var firstName = "Joana";
+    var firstName = "Joana Grace";
     var lastName = "Garcia";
     var fullName = firstName + " " + lastName;
     document.getElementById("name-info").innerHTML = "Full Name: " + fullName;
+
+    var profile = {
+      age: 21,
+      hasProgrammingExperience: true,
+      num1: 10,
+      num2: 5,
+      firstName: "Joana",
+      lastName: "Garcia"
+    };
+    
   </script>
 </body>
 </html>
