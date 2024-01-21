@@ -199,6 +199,26 @@
       document.getElementById("programming-languages").innerHTML = "Programming Languages: " + languages.join(", ");
     }
 
+    class Profile {
+      constructor(age, hasProgrammingExperience, num1, num2, firstName, lastName) {
+        this.age = age;
+        this.hasProgrammingExperience = hasProgrammingExperience;
+        this.num1 = num1;
+        this.num2 = num2;
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+
+      calculateGWAResult() {
+        return this.num1 + this.num2;
+      }
+
+      getFullName() {
+        return this.firstName + " " + this.lastName;
+      }
+    }
+
+
   </script>
 </body>
 </html>
