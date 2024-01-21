@@ -218,6 +218,10 @@
       }
     }
 
+    document.getElementById("age-info").innerHTML = "Age: " + profile.age + " years old";
+    document.getElementById("experience-info").innerHTML = profile.hasProgrammingExperience ? "I have programming experience." : "I am new to programming.";
+    document.getElementById("GWA-result").innerHTML = "GWA Result: " + calculateGWAResult(profile.num1, profile.num2);
+    document.getElementById("name-info").innerHTML = "Full Name: " + getFullName(profile.firstName, profile.lastName);
 
   </script>
 </body>
