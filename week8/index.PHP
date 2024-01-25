@@ -127,6 +127,21 @@
 
 <script>
   alert("Welcome to Joana Grace Garcia's Personal Profile Page!");
+
+  <?php
+      $age = 21;
+      $hasProgrammingExperience = true;
+      $num1 = 10;
+      $num2 = 5;
+      $firstName = "Joana Grace";
+      $lastName = "Garcia";
+    ?>
+
+    document.getElementById("age-info").innerHTML = "Age: <?php echo $age; ?> years";
+    document.getElementById("experience-info").innerHTML = "<?php echo $hasProgrammingExperience ? 'I have programming experience.' : 'I am new to programming.'; ?>";
+    document.getElementById("GWA-result").innerHTML = "GWA Result: <?php echo $num1 + $num2; ?>";
+    document.getElementById("name-info").innerHTML = "Full Name: <?php echo $firstName . ' ' . $lastName; ?>";
+    
 </script>
 
 </style>
@@ -177,16 +192,6 @@
     var lastName = "Garcia";
     var fullName = firstName + " " + lastName;
     document.getElementById("name-info").innerHTML = "Full Name: " + fullName;
-
-    <?php
-    $age = 21;
-    $hasProgrammingExperience = true;
-    $num1 = 10;
-    $num2 = 5;
-    $firstName = "Joana Grace";
-    $lastName = "Garcia";
-    ?>
-
 
     function calculateGWAResult(num1, num2) {
       return num1 + num2;
