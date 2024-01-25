@@ -141,7 +141,18 @@
     document.getElementById("experience-info").innerHTML = "<?php echo $hasProgrammingExperience ? 'I have programming experience.' : 'I am new to programming.'; ?>";
     document.getElementById("GWA-result").innerHTML = "GWA Result: <?php echo $num1 + $num2; ?>";
     document.getElementById("name-info").innerHTML = "Full Name: <?php echo $firstName . ' ' . $lastName; ?>";
-    
+
+    <?php
+      function calculateGWAResult($num1, $num2) {
+        return $num1 + $num2;
+      }
+
+      function getFullName($firstName, $lastName) {
+        return $firstName . " " . $lastName;
+      }
+    ?>
+
+
 </script>
 
 </style>
