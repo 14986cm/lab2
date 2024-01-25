@@ -178,14 +178,15 @@
     var fullName = firstName + " " + lastName;
     document.getElementById("name-info").innerHTML = "Full Name: " + fullName;
 
-    var profile = {
-      age: 21,
-      hasProgrammingExperience: true,
-      num1: 10,
-      num2: 5,
-      firstName: "Joana",
-      lastName: "Garcia"
-    };
+    <?php
+    $age = 21;
+    $hasProgrammingExperience = true;
+    $num1 = 10;
+    $num2 = 5;
+    $firstName = "Joana Grace";
+    $lastName = "Garcia";
+    ?>
+
 
     function calculateGWAResult(num1, num2) {
       return num1 + num2;
