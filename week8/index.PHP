@@ -154,6 +154,8 @@
 
     document.getElementById("GWA-result").innerHTML = "GWA Result: <?php echo calculateGWAResult($num1, $num2); ?>";
     document.getElementById("name-info").innerHTML = "Full Name: <?php echo getFullName($firstName, $lastName); ?>";
+    
+    document.getElementById("programming-languages").innerHTML = "Programming Languages: <?php echo implode(", ", ["HTML", "CSS", "JavaScript"]); ?>";
 
 </script>
 
