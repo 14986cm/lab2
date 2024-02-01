@@ -4,6 +4,7 @@
 <title>Personal Profile Page</title>
 <link rel="icon" type="image/x-icon" href="Icon.png">
 <style>
+
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
