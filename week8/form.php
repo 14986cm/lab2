@@ -1,11 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
 <style>
 .error {color: #FF0000;}
+body {
+  background-color: pink; /* Set background color to pink */
+  font-family: Arial, sans-serif; /* Change font family */
+}
+.container {
+  width: 50%; /* Set width to 50% */
+  margin: 0 auto; /* Center the container */
+}
 </style>
 </head>
 <body>  
 
+<div class="container"> <!-- Wrap the form inside a container -->
 <?php
-// define variables and set to empty values
+// Define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $website = "";
 
@@ -14,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = "Name is required";
   } else {
     $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
+    // Check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
       $nameErr = "Only letters and white space allowed";
     }
@@ -24,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
+    // Check if e-mail address is well-formed
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
     }
@@ -34,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $website = "";
   } else {
     $website = test_input($_POST["website"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    // Check if URL address syntax is valid
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
       $websiteErr = "Invalid URL";
     }
@@ -64,16 +76,16 @@ function test_input($data) {
 <h2>PHP Form Validation Example</h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
+  Name: <input type="text" name="name" value="<?php echo htmlspecialchars($name);?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+  E-mail: <input type="text" name="email" value="<?php echo htmlspecialchars($email);?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
-  Website: <input type="text" name="website" value="<?php echo $website;?>">
+  Website: <input type="text" name="website" value="<?php echo htmlspecialchars($website);?>">
   <span class="error"><?php echo $websiteErr;?></span>
   <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+  Comment: <textarea name="comment" rows="5" cols="40"><?php echo htmlspecialchars($comment);?></textarea>
   <br><br>
   Gender:
   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
@@ -86,15 +98,17 @@ function test_input($data) {
 
 <?php
 echo "<h2>Your Input:</h2>";
-echo $name;
+echo htmlspecialchars($name);
 echo "<br>";
-echo $email;
+echo htmlspecialchars($email);
 echo "<br>";
-echo $website;
+echo htmlspecialchars($website);
 echo "<br>";
-echo $comment;
+echo htmlspecialchars($comment);
 echo "<br>";
-echo $gender;
+echo htmlspecialchars($gender);
 ?>
+</div> <!-- End of container -->
 
 </body>
+</html>
