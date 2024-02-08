@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "VitasVirus26";
-$dbname = "myDB";
+$username = "webprogss221";
+$password = "=latHen97";
+$dbname = "webprogss221";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,13 +11,13 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$sql = "SELECT id, name, email, website, comment, gender FROM jgarcia_myguests";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    echo "id: " . $row["id"]. " - Name: " . $row["name"]. " " . $row["email"]. " " . $row["website"]. " " . $row["comment"]. " " . $row["gender"]. "<br>";
   }
 } else {
   echo "0 results";
