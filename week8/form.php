@@ -9,7 +9,7 @@
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$nameErr = $emailErr = $genderErr = "";
 $name = $email = $gender = $comment = $website = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -50,67 +50,61 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
 ?>
 
 <h2>PHP Form Validation Example</h2>
 <p><span class="error">* required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name">
+<form method="post" action="submit_form.php">  
+  Name: <input type="text" name="name" value="<?php echo $name; ?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email">
+  E-mail: <input type="text" name="email" value="<?php echo $email; ?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
-  Website: <input type="text" name="website">
+  Website: <input type="text" name="website" value="<?php echo $website; ?>">
   <span class="error"><?php echo $websiteErr;?></span>
   <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea>
   <br><br>
   Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender" value="other">Other
+  <input type="radio" name="gender" value="female" <?php if (isset($gender) && $gender == "female") echo "checked"; ?>>Female
+  <input type="radio" name="gender" value="male" <?php if (isset($gender) && $gender == "male") echo "checked"; ?>>Male
+  <input type="radio" name="gender" value="other" <?php if (isset($gender) && $gender == "other") echo "checked"; ?>>Other
   <span class="error">* <?php echo $genderErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">  
 </form>
 
 <?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
-?>
+if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($nameErr) && empty($emailErr) && empty($genderErr)) {
+    $servername = "localhost";
+    $username = "webprogss221";
+    $password = "=latHen97";
+    $dbname = "webprogss221";
 
-<?php
-$servername = "localhost";
-$username = "webprogss221";
-$password = "=latHen97";
-$dbname = "webprogss221";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    $sql = "INSERT INTO jgarcia_myguests (firstname, email, website, comment, gender)
+    VALUES (?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $name, $email, $website, $comment, $gender);
+
+    if ($stmt->execute()) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
 }
-
-$sql = "INSERT INTO jgarcia_myguests (firstname, lastname, email)
-VALUES ('$name', '$website', '$email')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
 ?>
 
 </body>
